@@ -140,29 +140,46 @@
             position: relative;
         }
 
+        /* Plant placeholder base styles */
         .plant-placeholder {
-            width: 60px;
-            height: 60px;
-            background: rgba(168, 213, 186, 0.3);
+            width: 80px;
+            height: 80px;
+            background: white;
             border-radius: 50%;
             position: absolute;
-            top: -30px;
+            top: -40px;
             right: 20px;
             border: 3px solid var(--base);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            color: var(--base);
-            text-align: center;
+            overflow: hidden;
+            background-size: 60px auto;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .path-section:nth-child(even) .plant-placeholder {
             left: 20px;
             right: auto;
             border-color: var(--contrast);
-            background: rgba(160, 196, 247, 0.3);
-            color: var(--contrast);
+        }
+
+        /* Individual flower images */
+        .poppy-placeholder {
+            background-image: url('/images/poppy.png');
+        }
+
+        .daisy-placeholder {
+            background-image: url('/images/daisy.png');
+        }
+
+        .lupine-placeholder {
+            background-image: url('/images/lupine.png');
+        }
+
+        .milkweed-placeholder {
+            background-image: url('/images/milkweed.png');
         }
 
         .experience-content {
@@ -300,7 +317,7 @@
         <main class="garden-path">
             <!-- Experience Section 1 -->
             <section class="path-section" id="about">
-                <div class="plant-placeholder">Plant Image</div>
+                <div class="plant-placeholder poppy-placeholder"></div>
                 <h2 class="section-header">Current Role</h2>
                 <div class="experience-content">
                     <h3 class="experience-title">Senior Position Title</h3>
@@ -321,7 +338,7 @@
 
             <!-- Experience Section 2 -->
             <section class="path-section">
-                <div class="plant-placeholder">Plant Image</div>
+                <div class="plant-placeholder milkweed-placeholder"></div>
                 <h2 class="section-header">Previous Growth</h2>
                 <div class="experience-content">
                     <h3 class="experience-title">Previous Position Title</h3>
@@ -342,13 +359,13 @@
 
             <!-- Experience Section 3 -->
             <section class="path-section">
-                <div class="plant-placeholder">Plant Image</div>
+                <div class="plant-placeholder daisy-placeholder"></div>
                 <h2 class="section-header">Foundation Years</h2>
                 <div class="experience-content">
                     <h3 class="experience-title">Early Career Role</h3>
                     <p class="experience-details">First Company • 2017 - 2019</p>
                     <p class="experience-description">
-                        Like the sturdy manzanita that establishes strong root systems, my career focuses on 
+                        Like the sturdy manzanita that establishes strong root systems, my early career focused on 
                         building fundamental skills and understanding the ecosystem of [your industry]. These formative 
                         years provided the groundwork for all future professional growth.
                     </p>
@@ -363,15 +380,14 @@
 
             <!-- Personal Philosophy Section -->
             <section class="path-section">
-                <div class="plant-placeholder">Plant Image</div>
+                <div class="plant-placeholder lupine-placeholder"></div>
                 <h2 class="section-header">Professional Philosophy</h2>
                 <div class="experience-content">
                     <h3 class="experience-title">Cultivating Excellence</h3>
                     <p class="experience-description">
                         Just as California's native plants have evolved to create sustainable, thriving ecosystems, 
                         I believe in fostering collaborative environments where innovation can flourish naturally. 
-                        My approach combines deep-rooted expertise with the flexibility to adapt and grow in 
-                        ever-changing professional landscapes.
+                        My approach combines deep-rooted expertise with the flexibility to adapt and grow in ever-changing professional landscapes.
                     </p>
                 </div>
             </section>
