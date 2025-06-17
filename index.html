@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Growth - Iain Lowis</title>
+    <style>
+        :root {
+            /* Soft Triadic Pastel Palette */
+            --accent: #f44336;      /* Original red accent color */
+            --base: #a8d5ba;        /* Soft sage green (triadic) */
+            --contrast: #a0c4f7;    /* Soft periwinkle blue (triadic) */
+            --neutral-warm: #f5f3f0; /* Warm neutral */
+            --neutral-cool: #f0f2f5; /* Cool neutral */
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: var(--neutral-warm);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, .header h1, .section-header, .experience-title, .contact-info {
+            font-family: 'Lucida Bright', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--base), var(--accent));
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: calc(16px * 1.618 * 1.618);
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: normal;
+        }
+
+        .header .subtitle {
+            font-size: calc(16px * 1.618);
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0 60px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            border: 2px solid var(--base);
+            background: var(--neutral-cool);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            background: var(--base);
+            color: var(--neutral-warm);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.disabled {
+            border-color: var(--accent);
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Garden Path Layout */
+        .garden-path {
+            position: relative;
+            margin: 60px 0;
+        }
+
+        .path-section {
+            margin: 80px 0;
+            position: relative;
+            padding: 40px;
+            background: var(--neutral-cool);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(45, 52, 54, 0.1);
+        }
+
+        .path-section:nth-child(even) {
+            margin-left: 10%;
+            border-left: 4px solid var(--contrast);
+        }
+
+        .path-section:nth-child(odd) {
+            margin-right: 10%;
+            border-right: 4px solid var(--base);
+        }
+
+        .section-header {
+            font-size: calc(16px * 1.618);
+            color: var(--accent);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .plant-placeholder {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 213, 186, 0.3);
+            border-radius: 50%;
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            border: 3px solid var(--base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--base);
+            text-align: center;
+        }
+
+        .path-section:nth-child(even) .plant-placeholder {
+            left: 20px;
+            right: auto;
+            border-color: var(--contrast);
+            background: rgba(160, 196, 247, 0.3);
+            color: var(--contrast);
+        }
+
+        .experience-content {
+            margin-top: 20px;
+        }
+
+        .experience-title {
+            font-size: calc(16px * 1.618);
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .experience-details {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .experience-description {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .skills-garden {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-seed {
+            background: rgba(168, 213, 186, 0.2);
+            color: var(--base);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            border: 1px solid var(--base);
+        }
+
+        .path-section:nth-child(even) .skill-seed {
+            background: rgba(160, 196, 247, 0.2);
+            color: var(--contrast);
+            border-color: var(--contrast);
+        }
+
+        /* Connecting Path */
+        .garden-path::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--base), var(--contrast), var(--accent));
+            transform: translateX(-50%);
+            opacity: 0.4;
+        }
+
+        /* Footer Garden */
+        .footer-garden {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 80px;
+            border-top: 2px solid rgba(168, 213, 186, 0.3);
+            background: var(--neutral-cool);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .contact-info {
+            font-size: calc(16px * 1.618);
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--base);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: var(--neutral-warm);
+        }
+
+        .contact-item:hover {
+            background: var(--base);
+            color: var(--neutral-warm);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .path-section:nth-child(even),
+            .path-section:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Iain Lowis</h1>
+            <p class="subtitle">Cultivating Growth</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-buttons">
+            <a href="#about" class="nav-btn">About Me</a>
+            <a href="#" class="nav-btn disabled">New Page</a>
+            <a href="#contact" class="nav-btn">Connect</a>
+        </nav>
+
+        <!-- Garden Path - Professional Journey -->
+        <main class="garden-path">
+            <!-- Experience Section 1 -->
+            <section class="path-section" id="about">
+                <div class="plant-placeholder">Plant Image</div>
+                <h2 class="section-header">Current Role</h2>
+                <div class="experience-content">
+                    <h3 class="experience-title">Senior Position Title</h3>
+                    <p class="experience-details">Company Name • 2022 - Present</p>
+                    <p class="experience-description">
+                        Like the resilient California oak that adapts to diverse terrains, I've cultivated expertise in [your field]. 
+                        This role has allowed me to grow deep roots in [specific skills/areas], while branching out into new territories 
+                        of innovation and leadership.
+                    </p>
+                    <div class="skills-garden">
+                        <span class="skill-seed">Leadership</span>
+                        <span class="skill-seed">Strategy</span>
+                        <span class="skill-seed">Innovation</span>
+                        <span class="skill-seed">Team Building</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section 2 -->
+            <section class="path-section">
+                <div class="plant-placeholder">Plant Image</div>
+                <h2 class="section-header">Previous Growth</h2>
+                <div class="experience-content">
+                    <h3 class="experience-title">Previous Position Title</h3>
+                    <p class="experience-details">Previous Company • 2019 - 2022</p>
+                    <p class="experience-description">
+                        Drawing inspiration from the California poppy's ability to thrive in challenging conditions, 
+                        I developed resilience and adaptability in this role. Here, I learned to bloom where planted 
+                        while always reaching toward new opportunities for growth.
+                    </p>
+                    <div class="skills-garden">
+                        <span class="skill-seed">Project Management</span>
+                        <span class="skill-seed">Problem Solving</span>
+                        <span class="skill-seed">Collaboration</span>
+                        <span class="skill-seed">Analysis</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section 3 -->
+            <section class="path-section">
+                <div class="plant-placeholder">Plant Image</div>
+                <h2 class="section-header">Foundation Years</h2>
+                <div class="experience-content">
+                    <h3 class="experience-title">Early Career Role</h3>
+                    <p class="experience-details">First Company • 2017 - 2019</p>
+                    <p class="experience-description">
+                        Like the sturdy manzanita that establishes strong root systems, my career focuses on 
+                        building fundamental skills and understanding the ecosystem of [your industry]. These formative 
+                        years provided the groundwork for all future professional growth.
+                    </p>
+                    <div class="skills-garden">
+                        <span class="skill-seed">Foundation Skills</span>
+                        <span class="skill-seed">Learning</span>
+                        <span class="skill-seed">Adaptation</span>
+                        <span class="skill-seed">Growth Mindset</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Philosophy Section -->
+            <section class="path-section">
+                <div class="plant-placeholder">Plant Image</div>
+                <h2 class="section-header">Professional Philosophy</h2>
+                <div class="experience-content">
+                    <h3 class="experience-title">Cultivating Excellence</h3>
+                    <p class="experience-description">
+                        Just as California's native plants have evolved to create sustainable, thriving ecosystems, 
+                        I believe in fostering collaborative environments where innovation can flourish naturally. 
+                        My approach combines deep-rooted expertise with the flexibility to adapt and grow in 
+                        ever-changing professional landscapes.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer-garden" id="contact">
+            <h2 class="contact-info">Let's Cultivate Something Together</h2>
+            <div class="contact-details">
+                <a href="mailto:your.email@example.com" class="contact-item">Email</a>
+                <a href="https://linkedin.com/in/yourprofile" class="contact-item">LinkedIn</a>
+                <a href="tel:+1234567890" class="contact-item">Phone</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
