@@ -43,7 +43,7 @@
         /* Header Section */
         .header {
             text-align: center;
-            padding: 60px 0 40px;
+            padding: 60px 0 20px;
             position: relative;
         }
 
@@ -60,8 +60,8 @@
         }
 
         .header h1 {
-            font-size: calc(16px * 1.618 * 1.618);
-            margin-bottom: 10px;
+            font-size: calc(24px * 1.618 * 1.618);
+            margin-bottom: 8px;
             color: var(--text-primary);
             font-weight: normal;
         }
@@ -77,13 +77,13 @@
         .nav-buttons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 40px 0 60px;
+            gap: 20px;
+            margin: 20px 0 20px;
             flex-wrap: wrap;
         }
 
         .nav-btn {
-            padding: 15px 30px;
+            padding: 10px 35px;
             border: 2px solid var(--base);
             background: var(--neutral-cool);
             color: var(--text-primary);
@@ -93,6 +93,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-width: 200px;
+            text-align: center;
         }
 
         .nav-btn:hover {
@@ -157,6 +159,13 @@
             background-size: 80px auto;
             background-repeat: no-repeat;
             background-position: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plant-placeholder:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .path-section:nth-child(even) .plant-placeholder {
@@ -165,7 +174,55 @@
             border-color: var(--contrast);
         }
 
-        /* Individual flower images */
+        /* Tooltip styles */
+        .plant-placeholder[title] {
+            position: relative;
+        }
+
+        .plant-placeholder::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 10;
+            pointer-events: none;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        .plant-placeholder::before {
+            content: '';
+            position: absolute;
+            bottom: -37px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid var(--text-primary);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 10;
+        }
+
+        .plant-placeholder:hover::after,
+        .plant-placeholder:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Individual flower images from GitHub */
         .poppy-placeholder {
             background-image: url('https://raw.githubusercontent.com/ilowis/v0-vercel-csm-interview/main/images/poppy.png');
         }
@@ -289,11 +346,26 @@
             .nav-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
+            }
+
+            .nav-btn {
+                min-width: 400px;
             }
 
             .contact-details {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            /* Adjust tooltip position on mobile */
+            .plant-placeholder::after {
+                bottom: -50px;
+                font-size: 11px;
+            }
+
+            .plant-placeholder::before {
+                bottom: -42px;
             }
         }
     </style>
@@ -302,14 +374,13 @@
     <div class="container">
         <!-- Header Section -->
         <header class="header">
-            <h1>Iain Lowis</h1>
-            <p class="subtitle">Cultivating Growth</p>
+            <h1><b>Iain Lowis</b></h1>
+            <p class="subtitle">Cultivation for Growth: Native Systems, Strategic Roots</p>
         </header>
 
         <!-- Navigation -->
         <nav class="nav-buttons">
             <a href="#about" class="nav-btn">About Me</a>
-            <a href="#" class="nav-btn disabled">New Page</a>
             <a href="#contact" class="nav-btn">Connect</a>
         </nav>
 
@@ -317,15 +388,15 @@
         <main class="garden-path">
             <!-- Experience Section 1 -->
             <section class="path-section" id="about">
-                <div class="plant-placeholder poppy-placeholder"></div>
-                <h2 class="section-header">Current Role</h2>
+                <div class="plant-placeholder poppy-placeholder" title="California Poppy - Resilience & Adaptability"></div>
+                <h2 class="section-header">Seasonal Blooms</h2>
                 <div class="experience-content">
-                    <h3 class="experience-title">Senior Position Title</h3>
                     <p class="experience-details">Company Name • 2022 - Present</p>
                     <p class="experience-description">
-                        Like the resilient California oak that adapts to diverse terrains, I've cultivated expertise in [your field]. 
-                        This role has allowed me to grow deep roots in [specific skills/areas], while branching out into new territories 
-                        of innovation and leadership.
+                        🌼 Spring 2023: Unlocked 1.29x ACV growth via global renewal for top-tier account
+                        🌻 Summer 2022: Rebuilt onboarding for multi-team adoption, reducing time to launch
+                        🍂 Fall 2021: Scaled retention playbooks and drove 130% NER in hybrid B2B motion
+                        🌾 Winter 2020: Prototyped reporting automation that saved 15+ client hours/week
                     </p>
                     <div class="skills-garden">
                         <span class="skill-seed">Leadership</span>
@@ -338,15 +409,15 @@
 
             <!-- Experience Section 2 -->
             <section class="path-section">
-                <div class="plant-placeholder milkweed-placeholder"></div>
-                <h2 class="section-header">Previous Growth</h2>
+                <div class="plant-placeholder milkweed-placeholder" title="Milkweed - Growth & Transformation"></div>
+                <h2 class="section-header">Root System</h2>
                 <div class="experience-content">
-                    <h3 class="experience-title">Previous Position Title</h3>
                     <p class="experience-details">Previous Company • 2019 - 2022</p>
                     <p class="experience-description">
-                        Drawing inspiration from the California poppy's ability to thrive in challenging conditions, 
-                        I developed resilience and adaptability in this role. Here, I learned to bloom where planted 
-                        while always reaching toward new opportunities for growth.
+                        Rooted in systems thinking: Engineering background taught me to debug upstream, not downstream.
+                        Grew through iteration: Adtech taught me performance is just strategy plus feedback loops.
+                        Fed by curiosity: From API docs to HOA regulations—anything with structure is fair game.
+                        Include visual nods to deep-rooted plants like Arctostaphylos (Manzanita) or Quercus agrifolia (Coast Live Oak)—long-game thinkers of the native ecosystem.
                     </p>
                     <div class="skills-garden">
                         <span class="skill-seed">Project Management</span>
@@ -359,15 +430,12 @@
 
             <!-- Experience Section 3 -->
             <section class="path-section">
-                <div class="plant-placeholder daisy-placeholder"></div>
-                <h2 class="section-header">Foundation Years</h2>
+                <div class="plant-placeholder daisy-placeholder" title="Daisy - Simplicity & New Beginnings"></div>
+                <h2 class="section-header">Active Cultivation</h2>
                 <div class="experience-content">
-                    <h3 class="experience-title">Early Career Role</h3>
                     <p class="experience-details">First Company • 2017 - 2019</p>
                     <p class="experience-description">
-                        Like the sturdy manzanita that establishes strong root systems, my early career focused on 
-                        building fundamental skills and understanding the ecosystem of [your industry]. These formative 
-                        years provided the groundwork for all future professional growth.
+                        🌱 v0 prototyping: Built & shipped my personal page with AI scaffolding and Vercel deploy 🔧 Learning Next.js App Router & RSCs to optimize rendering flows like native plant water usage: minimal, efficient, high-yield 🐛 Debugging workflows: Automating compliance tracking for HOA governance (yes, that’s a thing) 🧪 Experimenting with edge functions—how to ship personalized content faster than a spring lupine bloom
                     </p>
                     <div class="skills-garden">
                         <span class="skill-seed">Foundation Skills</span>
@@ -380,14 +448,11 @@
 
             <!-- Personal Philosophy Section -->
             <section class="path-section">
-                <div class="plant-placeholder lupine-placeholder"></div>
-                <h2 class="section-header">Professional Philosophy</h2>
+                <div class="plant-placeholder lupine-placeholder" title="Lupine - Aspiration & Reaching Higher"></div>
+                <h2 class="section-header">Why Vercel? (hint: for growth)</h2>
                 <div class="experience-content">
-                    <h3 class="experience-title">Cultivating Excellence</h3>
                     <p class="experience-description">
-                        Just as California's native plants have evolved to create sustainable, thriving ecosystems, 
-                        I believe in fostering collaborative environments where innovation can flourish naturally. 
-                        My approach combines deep-rooted expertise with the flexibility to adapt and grow in ever-changing professional landscapes.
+                        California wildflowers thrive because they know how to work with constraint. They scale with intention, evolve quickly, and anchor their ecosystems quietly but powerfully. That’s how I’ve tried to operate in my career—building strategy rooted in systems, not hype. Vercel’s tools feel native to this mindset: performant, adaptable, and honest in what they empower developers to do. This page? Just one seed. I plan to keep cultivating.
                     </p>
                 </div>
             </section>
@@ -395,7 +460,7 @@
 
         <!-- Footer -->
         <footer class="footer-garden" id="contact">
-            <h2 class="contact-info">Let's Cultivate Something Together</h2>
+            <h2 class="contact-info">I cultivate growth—strategically, sustainably, and in good company.</h2>
             <div class="contact-details">
                 <a href="mailto:iainlowis@gmail.com" class="contact-item">Email</a>
                 <a href="https://www.linkedin.com/in/iainlowis/" class="contact-item">LinkedIn</a>
